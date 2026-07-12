@@ -38,7 +38,7 @@ async function main(){
     await ConnectDB(DATABASE_TYPE, DATABASE_URL);
     
     app.use(setRateLimit(5 * 60 * 1000, 500, "Timeout Global timelimit hit."))
-    app.get("/", (res: Response) => {
+    app.get("/", (req:Request, res: Response) => {
 
         const r = new response(res);
 
