@@ -10,7 +10,8 @@
     "build": "tsc",
     "start": "node dist/server.js",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "setup-win": "chmod +x scripts/clean-examples.sh; bash scripts/clean-examples.sh"
   },
   "keywords": [],
   "author": "",
