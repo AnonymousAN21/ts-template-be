@@ -9,7 +9,14 @@ import Show from "../../utils/error.handler.js";
  */
 type DatabaseType = "postgre" | "mysql" | "sqlite" | "mongodb";
 
-export let dbInstance: any = null;
+type DbInstance =
+    | Awaited<ReturnType<typeof ConnectPOSTGRE>>
+    | Awaited<ReturnType<typeof ConnectMYSQL>>
+    | Awaited<ReturnType<typeof ConnectSQLITE>>
+    | Awaited<ReturnType<typeof ConnectMongodb>>
+    | null;
+    
+export let dbInstance: DbInstance = null;
 
 /**
  * Menghubungkan aplikasi ke database eksternal berdasarkan tipe dan URL koneksi yang diberikan.

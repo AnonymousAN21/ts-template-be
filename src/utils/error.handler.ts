@@ -25,7 +25,7 @@ export default function Show(options: ShowOptions = {
     const ignore_env = options.ignore_env;
     const environment = process.env.ENVIRONMENT || "PROD";
 
-    if(environment == 'PROD' && ( ignore_env == false || ignore_env == undefined)){
+    if(environment === 'PROD' && ( ignore_env === false || ignore_env === undefined)){
         return;
     }
     

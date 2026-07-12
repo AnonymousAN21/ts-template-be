@@ -6,19 +6,28 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "compile-dev": "tsc --watch",
-    "dev": "pm2-dev dist/server.js"
+    "dev": "pm2-dev dist/server.js",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@types/cors": "^2.8.19",
     "@types/node": "^26.1.1",
     "@types/pg": "^8.20.0",
     "drizzle-kit": "^0.31.10",
+    "eslint": "^10.7.0",
+    "globals": "^17.7.0",
+    "jiti": "^2.7.0",
     "pm2": "^7.0.3",
-    "typescript": "^7.0.2"
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.63.0"
   },
   "dependencies": {
     "@types/better-sqlite3": "^7.6.13",

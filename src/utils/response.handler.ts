@@ -28,14 +28,14 @@ export default class ApiResponse {
 
     /**
      * Sends a standard successful JSON response.
-     * * @param {any} data - The payload to be returned to the client.
+     * * @param {unknown} data - The payload to be returned to the client.
      * @param {string} [message="Success"] - A descriptive message indicating the outcome.
      * @param {number} [statusCode=200] - The HTTP status code (defaults to 200 OK).
      * @returns {Response} The Express response object.
      * * @example
      * return new ApiResponse(res).success({ id: 1, name: "Alice" }, "User fetched successfully");
      */
-    public success(data: any, message: string = "Success", statusCode = 200): Response {
+    public success<T>(data: T, message: string = "Success", statusCode = 200): Response {
         return this.res.status(statusCode).json({
             success: true,
             message: message,
@@ -45,7 +45,7 @@ export default class ApiResponse {
 
     /**
      * Sends a successful JSON response containing array data formatted with pagination metadata.
-     * * @param {any[]} data - The slice of dataset records matching the current page limit.
+     * * @param {unknown[]} data - The slice of dataset records matching the current page limit.
      * @param {PaginationMetadata} meta - The page, limit, and total count constraints.
      * @param {string} [message="Success"] - A descriptive message indicating the outcome.
      * @param {number} [statusCode=200] - The HTTP status code (defaults to 200 OK).
@@ -57,8 +57,8 @@ export default class ApiResponse {
      * "Users fetched successfully"
      * );
      */
-    public successPagination(
-        data: any[], 
+    public successPagination<T>(
+        data: T[], 
         meta: PaginationMetadata, 
         message: string = "Success", 
         statusCode = 200
@@ -84,12 +84,12 @@ export default class ApiResponse {
      * Sends a standard error JSON response.
      * * @param {string} [message="An error occurred"] - A user-friendly message describing the error state.
      * @param {number} [statusCode=500] - The HTTP status code representing the error (defaults to 500 Internal Server Error).
-     * @param {any} [details=null] - Optional raw error structures, validation messages, or stacks.
+     * @param {unknown} [details=null] - Optional raw error structures, validation messages, or stacks.
      * @returns {Response} The Express response object.
      * * @example
      * return new ApiResponse(res).error("Resource not found", 404);
      */
-    public error(message: string = "An error occurred", statusCode = 500, details: any = null): Response {
+    public error(message: string = "An error occurred", statusCode = 500, details: unknown = null): Response {
         return this.res.status(statusCode).json({
             success: false,
             message: message,
