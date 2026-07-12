@@ -49,8 +49,4 @@ fi
 printf '%s\0' "${FILES[@]}" | xargs -0 rm -f
 echo "Deleted."
 
-# Clean up any directories left empty by the removals above.
-echo "Removing now-empty directories under src/..."
-find src -mindepth 1 -type d -empty -delete
-
 echo "Done."
