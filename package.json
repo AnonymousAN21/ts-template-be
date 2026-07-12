@@ -11,7 +11,7 @@
     "start": "node dist/server.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "setup-win": "chmod +x scripts/clean-examples.sh; bash scripts/clean-examples.sh"
+    "setup-win": "chmod +x script/clean-examples.sh; bash script/clean-examples.sh"
   },
   "keywords": [],
   "author": "",
