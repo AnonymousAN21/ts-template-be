@@ -1,16 +1,10 @@
 import { Response } from "express";
+import { IPaginationMeta, IPaginationResult } from "../interfaces/additional/request.wrapper.js";
 
 /**
  * Metadata configuration for calculating offset-based pagination fields.
  */
-export interface PaginationMetadata {
-    /** The current active page number (1-indexed). */
-    page: number;
-    /** The maximum number of items per page. */
-    limit: number;
-    /** The total count of items matching the query across the entire dataset. */
-    totalItems: number;
-}
+
 
 /**
  * A utility wrapper for standardizing API responses across an Express application.
@@ -59,23 +53,23 @@ export default class ApiResponse {
      */
     public successPagination<T>(
         data: T[], 
-        meta: PaginationMetadata, 
+        meta: IPaginationMeta, 
         message: string = "Success", 
         statusCode = 200
     ): Response {
-        const totalPages = Math.ceil(meta.totalItems / meta.limit);
+        const totalPages = Math.ceil(meta.totalItems / meta.itemPerPage);
 
         return this.res.status(statusCode).json({
             success: true,
             message,
             data,
             pagination: {
-                current_page: meta.page,
-                limit: meta.limit,
+                current_page: meta.currentPage, 
+                limit: meta.itemPerPage,    
                 total_item: meta.totalItems,
-                total_pages: totalPages,
-                has_next_page: meta.page < totalPages,
-                has_prev_page: meta.page > 1
+                total_pages: totalPages,    
+                has_next_page: meta.currentPage < totalPages, 
+                has_prev_page: meta.currentPage > 1  
             }
         });
     }

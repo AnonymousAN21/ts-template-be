@@ -1,0 +1,8 @@
+[7/14/2026] : Creating Account & Course Schema + model for mongoose
+it has lot of connection to other Schema that hasn't been implement yet
+like lecture, comment, post, forum, role, section.
+
+[8/26/2026] : Updating LecturePage and Lecture Schema so that the Lecture
+will contain all of the LecturePage IDs instead of the LecturePage refrences
+into the their lecture, or simply it means instead of have the Lecture as a Parent for each 
+LecturePage we make that the Parent Group all the LecturePage in one fields.

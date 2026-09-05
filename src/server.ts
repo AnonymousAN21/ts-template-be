@@ -7,9 +7,11 @@ import { MainRouterV1 } from "./config/routes/main.v1.routes.js";
 import helmet from "helmet";
 import cors from "cors"
 import setRateLimit from "./middlewares/ratelimit.middleware.js";
+import cookieParser from "cookie-parser";
 
 const app = express();
 app.use(express.json());
+app.use(cookieParser())
 app.use(express.urlencoded({ extended: true }));
 
 // if behind reverse proxy if not commment it
@@ -49,8 +51,8 @@ async function main(){
     
     app.use("/v1", MainRouterV1.router)
 
-    app.listen(3000, () => {
-        Show({text: "Hello, World!", ignore_env: true});
+    app.listen(5000, () => {
+        Show({text: "Server is running on port : 5000", ignore_env: true});
     })
 }
 
